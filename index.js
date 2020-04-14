@@ -8,13 +8,11 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     config = require('config'); // get our config file
-
-
 // =======================
 // configuration =========
 // =======================
 let port = process.env.PORT || config.port; // used to create, sign, and verify tokens
-mongoose.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true }); // connect to database
+mongoose.connect(process.env.MONGODB_URI || config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true }); // connect to database
 console.log("MongoDb Connection: ", config.dbURL);
 
 
