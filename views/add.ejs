@@ -65,11 +65,30 @@
     <script>
 
         function addUser() {
+            let re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            
             let data = {
                 userName: addForm.userName.value,
                 phoneNo: addForm.phoneNo.value,
                 email : addForm.email.value,
                 address : addForm.address.value
+            }
+            let emailValid = re.test(data.email);
+            if(!data.userName) {
+                alert("address invalid");
+                return false;
+            }
+            if(!data.phoneNo) {
+                alert("address invalid");
+                return false;
+            }
+            if(!emailValid) {
+                alert("emai invalid");
+                return false;
+            }
+            if(!data.address) {
+                alert("address invalid");
+                return false;
             }
             let response = fetch('/api/people', {
                 method: 'POST',

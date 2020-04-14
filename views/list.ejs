@@ -3,7 +3,6 @@
 <head>
     <title>Home Page</title>
     <%- include('partials/links') %>
-    <link rel="stylesheet" href="/css/dashboard.css" />
 </head>
 
 <body>
@@ -81,18 +80,17 @@
     <script>
 
         function deleteUser(userId) {
-            debugger
-                let response = fetch('/api/remove/'+userId, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8'
-                     },
-                }).then(response => response.json())
-                    .then(result =>  {
-                        if(result.success){
-                            location.href = window.location.origin+'/api/people'
-                        }
-                });
+              let response = fetch('/api/remove/'+userId, {
+                  method: 'DELETE',
+                  headers: {
+                      'Content-type': 'application/json; charset=UTF-8'
+                    },
+              }).then(response => response.json())
+                  .then(result =>  {
+                      if(result.success){
+                          location.href = window.location.origin+'/api/people'
+                      }
+              });
             
         }
     </script>

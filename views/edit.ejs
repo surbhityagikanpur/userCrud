@@ -56,11 +56,29 @@
     <script>
         function updateUser() {
             let userId = updateForm.userId.value;
+            let re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
             let data = {
                 userName: updateForm.userName.value,
                 phoneNo: updateForm.phoneNo.value,
                 email : updateForm.email.value,
                 address : updateForm.address.value
+            }
+            let emailValid = re.test(data.email);
+            if(!data.userName) {
+                alert("address invalid");
+                return false;
+            }
+            if(!data.phoneNo) {
+                alert("address invalid");
+                return false;
+            }
+            if(!emailValid) {
+                alert("emai invalid");
+                return false;
+            }
+            if(!data.address) {
+                alert("address invalid");
+                return false;
             }
             let response = fetch('/api/people/'+userId, {
                 method: 'PUT',
